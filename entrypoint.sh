@@ -33,3 +33,4 @@ if [[ $result -ne 0 ]]; then
     exit 1;
 fi
 popd || (echo "failed to move back with popd"; exit 1);
+ls "${outdir}/*.md"
