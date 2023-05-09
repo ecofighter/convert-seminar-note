@@ -1,0 +1,23 @@
+name: convert-seminar-note
+description: convert .tex file to Markdown and split it
+author: Shota Arakaki
+branding:
+  icon: 'book'
+  color: 'green'
+inputs:
+  latex-dir:
+    description: directory name where the LaTeX file to convert exists
+    required: True
+  latex-filename:
+    description: name of the LaTeX file to convert
+    required: True
+  outdir:
+    description: directory to put Markdown files
+    required: True
+runs:
+  using: docker
+  image: ./Dockerfile
+  args:
+    - ${{ inputs.latex-dir }}
+    - ${{ inputs.latex-filename }}
+    - ${{ inputs.outdir }}
