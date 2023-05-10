@@ -26,7 +26,7 @@ fi
 mv "${latex_dir}/${latex_filename_noext}.md" "${outdir}/";
 
 pushd "${outdir}" || (echo "failed to move to ${outdir} with pushd"; exit 1);
-csplit --prefix="${latex_filename_noext}-" --suffix-format='%02d.md' "${latex_filename_noext}.md" '/#[^#]/' "{*}"
+csplit -z --prefix="${latex_filename_noext}-" --suffix-format='%02d.md' "${latex_filename_noext}.md" '/^# /' "{*}"
 result=$?
 if [[ $result -ne 0 ]]; then
     echo "csplit failed" >&2;
